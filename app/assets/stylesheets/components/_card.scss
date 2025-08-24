@@ -37,6 +37,11 @@
         font-size: large;
         color: $dark-purple;
         font-size: 16px;
+        .p-discreet {
+          text-wrap: nowrap;  // keep rating and star icon on the same line even with long titles
+          display: flex;
+          align-items: center;
+        }
       }
     }
     :first-child {  // target movie.title
