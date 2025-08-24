@@ -37,7 +37,7 @@
         font-size: large;
         color: $dark-purple;
         font-size: 16px;
-        .p-discreet {
+        .p-purple {
           text-wrap: nowrap;  // keep rating and star icon on the same line even with long titles
           display: flex;
           align-items: center;
@@ -47,9 +47,16 @@
     :first-child {  // target movie.title
       margin: 0 2px 0 0; // add space
     }
-    .p-discreet {
+    .p-purple {
       color: $light-purple;
       margin-bottom: 0; //overwrite bootstrap's styling
+    }
+    .p-white {
+      color: white;
+      margin-bottom: 0; //overwrite bootstrap's styling
+      margin-top: 12px;
+      padding-top: 16px;
+      border-top: 2px dashed $light-purple;
     }
   }
 }

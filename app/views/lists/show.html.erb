@@ -23,7 +23,7 @@
             <div class="title-rating-delete">
               <div class="title-rating">
                 <p><strong><%= bm.movie.title %></strong></p>
-                <p class="p-discreet"> • <%= bm.movie.rating %> <i class="fa-solid fa-star"></i></p>
+                <p class="p-purple"> • <%= bm.movie.rating %> <i class="fa-solid fa-star"></i></p>
               </div>
               <%=
                 link_to raw('<i class="fa-solid fa-trash-can"></i>'), delete_bookmark_path(bm),
@@ -31,7 +31,8 @@
                 class: "btn-ghost-delete"
               %>
             </div>
-            <p class="p-discreet">><%= bm.movie.overview %></p>
+            <p class="p-purple">><%= bm.movie.overview %></p>
+            <p class="p-white"><i class="fa-solid fa-quote-left"></i><%= bm.comment %></p>
           </div>
         </div>
       </li>
