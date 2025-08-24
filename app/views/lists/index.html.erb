@@ -1,11 +1,18 @@
-<h1>Save any kind of movies</h1>
+<div><%= render 'shared/banner', h1: 'Save any kind of movies', paragraph: 'Organize your movies in curated lists' %></div>
 
-<h2>My Lists</h2>
 
-<ul>
-  <% @lists.each do |list| %>
-    <li><%= link_to list.name, list_path(list) %></li>
-  <% end %>
-</ul>
-
-<%= link_to "Create a movie list", new_list_path %>
+<div class="container">
+  <div class="h2-btn">
+    <h2>My Lists</h2>
+    <%= link_to "Create a movie list", new_list_path, class: "btn-flat" %>
+  </div>
+  <div class="cards">
+    <% @lists.each do |list| %>
+      <%= link_to list_path(list) do %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/7991162/pexels-photo-7991162.jpeg)">
+          <%= list.name %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

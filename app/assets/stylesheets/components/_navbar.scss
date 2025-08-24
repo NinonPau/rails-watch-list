@@ -1,12 +1,20 @@
 .navbar-lewagon {
-  justify-content: space-between;
-  background: white;
+  background-image: linear-gradient(to right, $dark-purple, $wine);
+  p, .nav-link {
+    color: $dark-orange;
+  }
+  .navbar-collapse {
+    flex-grow: 0;
+  }
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
-
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.dropdown-menu {
+  background-color: $wine;
+  .dropdown-item {
+    color: $light-orange;
+    &:hover {
+      background-color: $light-orange;
+      color: $wine;
+    }
+  }
 }

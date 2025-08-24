@@ -3,3 +3,18 @@
 @import "avatar";
 @import "form_legend_clear";
 @import "navbar";
+@import "banner";
+@import "button";
+@import "card";
+
+// Index CSS
+
+.h2-btn {
+  margin: 30px auto;
+  display: flex;
+  justify-content: space-between;
+  h2 {
+    color: white;
+    font-weight: bold;
+  }
+}
