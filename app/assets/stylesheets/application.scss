@@ -10,10 +10,24 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "components/show";
+@import "pages/show";
 
 // Global style
 body {
   background-image: linear-gradient(to right, $dark-purple, $wine);
+}
+
+.h2-btn {
+  margin: 30px auto;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+h2 {
+  color: white;
+  font-weight: bold;
 }
 
 ul {

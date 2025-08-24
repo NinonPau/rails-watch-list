@@ -12,6 +12,20 @@
   }
 }
 
+.btn-ghost-delete {
+  color: white;
+  padding: 2px 12px;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: lighter;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+  &:hover {
+    opacity: 1;
+    color: $dark-orange;
+  }
+}
+
 .btn-flat {
   color: white;
   padding: 8px 24px;
@@ -22,17 +36,5 @@
   &:hover {
     background: white;
     color: $dark-orange;
-  }
-}
-
-.btn-gradient {
-  color: white;
-  padding: 8px 24px;
-  border-radius: 50px;
-  background: linear-gradient($light-purple, $dark-purple);
-  transition: background 0.3s ease;
-  &:hover {
-    background: linear-gradient($wine, $light-purple);
-    color: white;
   }
 }

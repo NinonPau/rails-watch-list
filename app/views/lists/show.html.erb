@@ -1,26 +1,50 @@
-<h1><%= @list.name %></h1>
-<p>Created: <%= @list.created_at %></p>
-<p>Updated: <%= @list.updated_at %></p>
-<%= @list.movies.count %>
+<!-- Banner display -->
+<% show_h1 = @list.name %>
+<% date_paragraph = raw("Created: #{@list.created_at.strftime("%d %B %Y")} <br> Last Updated: #{@list.updated_at.strftime("%d %B %Y")}") %>
+<% index_banner_img = 'https://images.pexels.com/photos/6899765/pexels-photo-6899765.jpeg' %>
+<div class='show-banner'>
+  <%= render 'shared/banner', h1: show_h1, paragraph: date_paragraph, image_url: index_banner_img %>
+  <% movie_sing_plur = (@list.movies.count == 1 ? "movie" : "movies") %>
+  <div class='topright'><%= @list.movies.count %> <%= movie_sing_plur %> </div>
+</div>
 
-<h2>Movies</h2>
-<ul class="list-group">
+<!-- Movies List display -->
+<div class="container">
+  <div class="h2-btn">
+    <h2>Movies</h2>
+    <%= link_to "Add a movie", "#add-movie", class: "btn-flat" %>
+  </div>
+  <ul class="list-group cards">
+    <% @list.bookmarks.each do |bm| %>
+      <li class="list-group-item">
+        <div class="card-movie">
+          <img src='<%= bm.movie.poster_url %>' alt="">
+          <div class="card-movie-infos">
+            <div class="title-rating-delete">
+              <div class="title-rating">
+                <p><strong><%= bm.movie.title %></strong></p>
+                <p class="p-discreet"> • <%= bm.movie.rating %> <i class="fa-solid fa-star"></i></p>
+              </div>
+              <%=
+                link_to raw('<i class="fa-solid fa-trash-can"></i>'), delete_bookmark_path(bm),
+                data: {turbo_method: :delete, turbo_confirm: "Do you want to remove this movie from the list?"},
+                class: "btn-ghost-delete"
+              %>
+            </div>
+            <p class="p-discreet">><%= bm.movie.overview %></p>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
 
-  <% @list.bookmarks.each do |bm| %>
-    <li class="list-group-item">
-      <img src='<%= bm.movie.poster_url %>' alt=""> <br>
-      <p><%= bm.movie.title %> <%= " -- " %> <%= bm.movie.rating %> <%= 'star icon' %> </p>
-      <p><%= bm.movie.overview %></p>
-      <%= link_to "Delete movie from list", delete_bookmark_path(bm), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-    </li>
-
+<!-- New Bookmark form -->
+<div class="container">
+  <h2 id="add-movie">Add a movie</h2>
+  <%= simple_form_for [@list, @bookmark] do |f| %>
+    <%= f.input :comment %>
+    <%= f.association :movie %>
+    <%= f.button :submit, class: "btn btn-primary" %>
   <% end %>
-</ul>
-<br>
-
-<h1>New bookmark</h1>
-<%= simple_form_for [@list, @bookmark] do |f| %>
-  <%= f.input :comment %>
-  <%= f.association :movie %>
-  <%= f.button :submit, class: "btn btn-primary" %>
-<% end %>
+</div>
